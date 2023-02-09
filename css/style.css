@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700;800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --header-padding-x: 20px;
+    --header-height: 65px;
+    --game-max-width: 500px;
+    --keyboard-height: 200px;
+    --key-bg: #818384;
+    --key-text-color: #000;
+}
+html,body{
+    height: 100vh;
+    font-family: 'Roboto Slab', serif;
+}
+#container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: whitesmoke;
+}
+#nav-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 0px var(--header-padding-x);
+    height: var(--header-height);
+    color: var(--key-text-color);
+    border-bottom: 1px solid #3a3a3c;
+}
+.topnav-left{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: flex-start;
+}
+.topnav-center{
+    flex-grow: 2;
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: .01em;
+    text-align: left;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    position: relative;
+    padding-left: 15px;
+}
+.topnav-right{
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+i{
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+#game-container{
+    width: 100%;
+    max-width: var(--game-max-width);
+    margin: 0 auto;
+    height: calc(100% - var(--header-height));
+    display: flex;
+    flex-direction: column;
+}
+#board-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    overflow: hidden;
+}
+#board{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 5px;
+    padding: 10px;
+}
+.square{
+    width: 8.4vh;
+    height: 8.4vh;
+    border: 2px solid rgb(58, 58, 60);
+    color: var(--key-text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+.alerts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    color: #fff;
+    text-transform: capitalize;
+    display: none;
+}
+#true-alerts{
+    display: flex;
+    font-size: 1.8vh;
+    color: aquamarine;
+}
+#keyboard-container{
+    height: var(--keyboard-height);
+    margin: 0 8px;
+    user-select: none;
+}
+.keyboard-row{
+    display: flex;
+    width: 100%;
+    margin: 0 auto 8px;
+    touch-action: manipulation;
+}
+.keyboard-row .button{
+    font-family: inherit;
+    font-weight: bold;
+    border: 0;
+    padding: 0;
+    margin: 0 6px 0 0;
+    height: 58px;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    background-color: var(--key-bg);
+    color: var(--key-text-color);
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+}
+.spacer-half{
+    flex: .5;
+}
+.keyboard-row .button.wide-button{
+    flex-grow: 1.5;
+}
+.correct-pos, .keyboard-row .correct-pos{
+    background-color: #538d4e;
+}
+.present, .keyboard-row .present{
+    background-color: #b59f3b;
+}
+.absent, .keyboard-row .absent{
+    background-color: #3a3a3c;
+}
+@media (min-width: 768px){
+    .topnav-center{
+        text-align: center;
+        font-size: 2rem;
+    }
+    .topnav-left, .topnav-right{
+        width: 120px;
+    }
+    i{
+        font-size: 1.7rem;
+        padding-top: 2px;
+        padding-left: 0px;
+    }
+}
+@media(max-height: 580px){
+    .square{
+        width: 6.5vh;
+        height: 6.5vh; 
+        font-size: 1.2rem;
+    }
+}
+@media(max-height: 500px){
+    .square{
+        width: 5vh;
+        height: 5vh; 
+        font-size: 0.8rem;
+    }
+}
+@media (prefers-color-scheme: dark) {
+    :root{
+        --key-text-color: #fff;
+    }
+    #container{
+        background-color: #121213;
+    }
+}
